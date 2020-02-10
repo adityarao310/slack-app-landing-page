@@ -312,13 +312,13 @@ pre {
     .button--accent-outline .button__system_icon svg * {
       fill: #4D61FC; }
   .button--accent-bg {
-    background-color: #4D61FC;
+    background-color: #096CDB;
     color: white; }
     .button--accent-bg .icon svg *,
     .button--accent-bg .button__system_icon svg * {
       fill: white; }
     .button--accent-bg:hover {
-      background-color: #344bfc; }
+      background-color: #0357B5; }
   .button--black-outline {
     background-color: transparent;
     border-color: #303030;
@@ -2513,7 +2513,7 @@ button.button {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 0px; }
   @media (max-width: 1400px) {
     .header-07__container, .header-23__container, .header-24__container, .header-25__container, .header-58__container {
@@ -2565,7 +2565,7 @@ button.button {
   position: relative;
   z-index: 10;
   max-height: 500px;
-  max-width: 100%;
+  max-width: 90%;
   text-align: center; }
   @media (max-width: 600px) {
     .header-07__img, .header-23__img, .header-24__img, .header-25__img, .header-58__img {
