@@ -11478,7 +11478,7 @@ button.button {
     background-color: #eee; }
 
 .press-01__item {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px; }
 
@@ -11515,11 +11515,12 @@ button.button {
     background-color: #eee; }
 
 .press-02__item {
-  margin-bottom: 40px; }
+  margin-bottom: 5px; }
 
 .press-02__text {
   margin-top: 0;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  font-style: italic;
   font-size: 20px;
   line-height: 1.6;
   color: #303030;
