@@ -11,9 +11,21 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <meta name="generator" content="Unicorn Platform" />
     <title>Success | Kaapi.team</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <script>
+        var url_page = window.location.href;
+        console.log(url_page)
+        test_url = 'https://kaapi.team/success?code=870354270615.1027327369188.1ec562d44b378d5133bcce9de694563a1ddaf9e1967fdfeec5321e8f4ddd6e77&state='
+        final = test_url.slice(32, -7)
+        console.log(final)
+        const url_post = 'https://o25qqobpx4.execute-api.us-east-1.amazonaws.com/slack-request-handler'
+        $.post(url_post, final, function () {
+            alert('sent')
+        })
+    </script>
 
     <!-- ===== END OF: Nav 2-->
     <div class="container container--large header-09__container">
