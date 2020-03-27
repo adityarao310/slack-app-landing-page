@@ -19,7 +19,9 @@
         var url_page = window.location.href;
         console.log(url_page)
         test_url = 'https://kaapi.team/success?code=870354270615.1027327369188.1ec562d44b378d5133bcce9de694563a1ddaf9e1967fdfeec5321e8f4ddd6e77&state='
-        final = test_url.slice(32, -7)
+        var final = {
+            "code": url_page.slice(32, -7),
+        }
         console.log(final)
         const url_post = 'https://o25qqobpx4.execute-api.us-east-1.amazonaws.com/slack-request-handler'
         $.post(url_post, final, function () {
