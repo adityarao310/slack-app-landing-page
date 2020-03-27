@@ -31,6 +31,7 @@
         */
         $.ajax({
             url: url_post,
+            headers: { 'Access-Control-Allow-Origin': '*' },
             type: "POST",
             data: final,
             contentType: "application/json; charset=utf-8",
