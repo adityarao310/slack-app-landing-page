@@ -18,28 +18,21 @@
     <script>
         var url_page = window.location.href;
         console.log(url_page)
-        test_url = 'https://kaapi.team/success?code=870354270615.1027327369188.1ec562d44b378d5133bcce9de694563a1ddaf9e1967fdfeec5321e8f4ddd6e77&state='
+        //test_url = 'https://kaapi.team/success?code=870354270615.1027327369188.1ec562d44b378d5133bcce9de694563a1ddaf9e1967fdfeec5321e8f4ddd6e77&state='
         var final = {
             "code": url_page.slice(32, -7),
+	    "event_type": "app_installed"
         }
-        console.log(final)
-        const url_post = 'https://o25qqobpx4.execute-api.us-east-1.amazonaws.com/slack-request-handler'
-        /*
-        $.post(url_post, final, function () {
-            alert('sent')
-        }, 'json')
-        */
+        const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
         $.ajax({
-            url: url_post,
-            headers: { 'Access-Control-Allow-Origin': '*' },
+            url: stage_url_post,
             type: "POST",
-            data: final,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function () {
-                alert('sent')
+            data: JSON.stringify(final),
+            contentType: "application/json",
+            success: function(result){
+              console.log(result)
             }
-        })
+        });
     </script>
 
     <!-- ===== END OF: Nav 2-->
