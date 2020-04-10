@@ -21,16 +21,16 @@
         //test_url = 'https://kaapi.team/success?code=870354270615.1027327369188.1ec562d44b378d5133bcce9de694563a1ddaf9e1967fdfeec5321e8f4ddd6e77&state='
         var final = {
             "code": url_page.slice(32, -7),
-            "event_type": "app_installed"
+	    "event_type": "app_installed"
         }
-        const stage_url_post = ' https://yvxljjd3fj.execute-api.us-east-1.amazonaws.com/'
+        const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
         $.ajax({
             url: stage_url_post,
             type: "POST",
             data: JSON.stringify(final),
             contentType: "application/json",
-            success: function (result) {
-                console.log(result)
+            success: function(result){
+              console.log(result)
             }
         });
     </script>
