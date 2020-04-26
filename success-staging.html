@@ -109,9 +109,7 @@
             });
         }
         var promise = testAjax();
-        promise.success(function (data) {
-            console.log(data);
-        });
+        promise.then(data => console.log(data)).catch(error => console.log(error));
         /*
         var url_page = window.location.href;
         var final = {
