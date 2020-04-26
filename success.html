@@ -29,9 +29,9 @@
             "code": url_page.slice(32, -7),
             "event_type": "app_installed"
         }
-        const stage_url_post = ' https://yvxljjd3fj.execute-api.us-east-1.amazonaws.com/'
+        const prod_url_post = ' https://yvxljjd3fj.execute-api.us-east-1.amazonaws.com/'
         $.ajax({
-            url: stage_url_post,
+            url: prod_url_post,
             type: "POST",
             data: JSON.stringify(final),
             contentType: "application/json",

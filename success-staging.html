@@ -16,57 +16,22 @@
 
 <body>
     <script>
-
-        function testAjax() {
-            var url_page = window.location.href;
-            var final = {
-                "code": url_page.slice(40, -7),
-                "event_type": "app_installed"
+        var url_page = window.location.href;
+        var code_to_slack = url_page.match(/code=(.*?)&/)[1]
+        var final = {
+            "code": code_to_slack,
+            "event_type": "app_installed"
+        }
+        const stage_url_post = ' https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
+        $.ajax({
+            url: stage_url_post,
+            type: "POST",
+            data: JSON.stringify(final),
+            contentType: "application/json",
+            success: function (result) {
+                console.log(result)
             }
-            const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
-            return $.ajax({
-                url: stage_url_post,
-                type: "POST",
-                data: JSON.stringify(final),
-                contentType: "application/json"
-            });
-        }
-        var promise = testAjax();
-        console.log(promise)
-        promise.then(data => console.log(data)).catch(error => console.log(error));
-
-
-
-        /*
-        function doTheThing() {
-            return new Promise((resolve, reject) => {
-                var url_page = window.location.href;
-                var final = {
-                    "code": url_page.slice(40, -7),
-                    "event_type": "app_installed"
-                }
-                const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
-                $.ajax({
-                    url: url_page,
-                    type: 'POST',
-                    data: JSON.stringify(final),
-                    success: function (data) {
-                        resolve(data)
-                    },
-                    error: function (error) {
-                        reject(error)
-                    },
-                })
-            })
-        }
-        doTheThing()
-            .then(data => {
-                console.log(data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        */
+        });
     </script>
 
     <!-- ===== END OF: Nav 2-->
