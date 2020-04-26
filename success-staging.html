@@ -17,8 +17,10 @@
 <body>
     <script>
         var url_page = window.location.href;
+        var url_to_parse = new URL(url_page);
+        var code_to_slack = url_to_parse.searchParams.get("code");
         var final = {
-            "code": url_page.slice(40, -7),
+            "code": code_to_slack,
             "event_type": "app_installed"
         }
         const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
