@@ -17,8 +17,6 @@
 <body>
     <script>
         var url_page = window.location.href;
-        console.log(url_page)
-        //test_url = 'https://kaapi.team/success?code=870354270615.1027327369188.1ec562d44b378d5133bcce9de694563a1ddaf9e1967fdfeec5321e8f4ddd6e77&state='
         var final = {
             "code": url_page.slice(40, -7),
             "event_type": "app_installed"
@@ -30,6 +28,7 @@
             data: JSON.stringify(final),
             contentType: "application/json",
             success: function (result) {
+                console.log("the result is -->\n")
                 console.log(result)
             }
         });
