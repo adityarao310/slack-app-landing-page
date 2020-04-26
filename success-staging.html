@@ -61,16 +61,12 @@
                 contentType: "application/json",
                 success: function (result) {
                     console.log(result) // when it comes from Slack app, it is of datatype string 
-                    result = JSON.parse(result)
+                    result = JSON.parse(result) // convert to dict i.e. object back again
                     // to generate this type of url https://slack.com/app_redirect?app=A010K7NH1RR&team=T010R08RW20&tab=home
                     var app_id = result["app_id"];
-                    console.log(app_id)
                     var slack_team_id = result["slack_team_id"];
-                    console.log(slack_team_id)
                     var deep_link_url = `https://slack.com/app_redirect?app=${app_id}&team=${slack_team_id}&tab=home`;
-                    console.log(deep_link_url)
                     var link_html = `<a class="button   button--accent-bg " href=${deep_link_url}><span>Open Kaapi inside Slack</span></a>`
-                    console.log(link_html)
                     $(link_html).insertBefore("#disclaimer_success_page");
                 }
             });

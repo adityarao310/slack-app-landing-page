@@ -21,49 +21,14 @@
 </head>
 
 <body>
-    <script>
-        var url_page = window.location.href;
-        console.log(url_page)
-        //test_url = 'https://kaapi.team/success?code=870354270615.1027327369188.1ec562d44b378d5133bcce9de694563a1ddaf9e1967fdfeec5321e8f4ddd6e77&state='
-        var final = {
-            "code": url_page.slice(32, -7),
-            "event_type": "app_installed"
-        }
-        const prod_url_post = ' https://yvxljjd3fj.execute-api.us-east-1.amazonaws.com/'
-        $.ajax({
-            url: prod_url_post,
-            type: "POST",
-            data: JSON.stringify(final),
-            contentType: "application/json",
-            success: function (result) {
-                console.log(result)
-            }
-        });
-    </script>
-
-    <!-- ===== END OF: Nav 2-->
     <div class="container container--large header-09__container">
         <div class="header-09__main">
             <div class="header-09__main_content">
-                <h1 class="heading heading--accent header-09__heading">Success! Open Slack for next steps</h1>
-                <p class="header-09__text">You can find the app on bottom-left sidebar inside Slack.</p>
-                <p class="header-09__text">If you can't find it; <b>type it in the Slack searchbar</b></p>
-                <!--<p><a href="https://slack.com/app_redirect?channel=ASDHJT5HB">Clicking here might directly take you there</a></p>-->
+                <h1 id="main_title" class="heading heading--accent header-09__heading">Successfully installed<img class="emoji  " src="img/emoji/cartwheel.png" alt="Emoji" /></h1>
 
-                <!--
-                <div class="header-09__action_box">
-                    <div class="buttons-set">
-                        <ul class="buttons-set__list">
-                            <li class="buttons-set__item"><a class="button   button--alt-accent-bg " href="javascript:void(0);" target=""><span>Sign Up</span></a>
-                            </li>
-                            <li class="buttons-set__item">
-                                <button class="button js-scroll-down button--white-bg " type="submit"><span class="button__text">Learn More</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                -->
+                <p id="disclaimer_success_page">You can also find Kaapi inside your Slack workspace
+                    by typing <em>ctrl+k or cmd+k
+                    </em></p>
             </div>
         </div>
         <div class="header-09__img">
@@ -80,16 +45,40 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--
-                            <img class="mockup__bottom" src="img/pablo-message-sent.png" />-->
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
+        <script>
+            var url_page = window.location.href;
+            var url_to_parse = new URL(url_page);
+            var code_to_slack = url_to_parse.searchParams.get("code");
+            var final = {
+                "code": code_to_slack,
+                "event_type": "app_installed"
+            }
+            const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
 
+            $.ajax({
+                url: stage_url_post,
+                type: "POST",
+                data: JSON.stringify(final),
+                contentType: "application/json",
+                success: function (result) {
+                    console.log(result) // when it comes from Slack app, it is of datatype string 
+                    result = JSON.parse(result) // convert to dict i.e. object back again
+                    // to generate this type of url https://slack.com/app_redirect?app=A010K7NH1RR&team=T010R08RW20&tab=home
+                    var app_id = result["app_id"];
+                    var slack_team_id = result["slack_team_id"];
+                    var deep_link_url = `https://slack.com/app_redirect?app=${app_id}&team=${slack_team_id}&tab=home`;
+                    var link_html = `<a class="button   button--accent-bg " href=${deep_link_url}><span>Open Kaapi inside Slack</span></a>`
+                    $(link_html).insertBefore("#disclaimer_success_page");
+                }
+            });
+
+        </script>
+    </div>
 </body>
 
 </html>
