@@ -17,83 +17,6 @@
 <body>
     <script>
         /*
-        function test() {
-            myFunction(function (d) {
-                //processing the data
-                console.log(d);
-            });
-        }
-
-        function myFunction(callback) {
-            var url_page = window.location.href;
-            var final = {
-                "code": url_page.slice(40, -7),
-                "event_type": "app_installed"
-            }
-            const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
-            var data;
-            $.ajax({
-                url: stage_url_post,
-                type: "POST",
-                data: JSON.stringify(final),
-                contentType: "application/json",
-                success: function (resp) {
-                    console.log("the result is -->\n")
-                    data = resp;
-                    callback(data);
-                }
-            }); // ajax asynchronus request 
-            //the following line wouldn't work, since the function returns immediately
-            //return data; // return data from the ajax request
-        }
-        */
-        /*
-        function ajaxCall(handleData) {
-            var url_page = window.location.href;
-            var final = {
-                "code": url_page.slice(40, -7),
-                "event_type": "app_installed"
-            }
-            console.log("The parsed final dictionary is -->\n");
-            console.log(final)
-            const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
-            console.log("The url where POST was done -->\n");
-            console.log(stage_url_post)
-            $.ajax({
-                url: stage_url_post,
-                type: "POST",
-                data: JSON.stringify(final),
-                contentType: "application/json",
-                success: function (data) {
-                    handleData(data);
-                    console.log("The data passed on to handleData callback is -->\n");
-                    console.log(data)
-                }
-            });
-        }
-
-        ajaxCall(function (output) {
-            console.log("The body returned from Slack is -->\n");
-            console.log(output)
-        });
-        */
-        /*
-        var value;
-        var url_page = window.location.href;
-        var final = {
-            "code": url_page.slice(40, -7),
-            "event_type": "app_installed"
-        }
-        const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
-        $.ajax({
-            url: stage_url_post,
-            type: "POST",
-            data: JSON.stringify(final),
-            contentType: "application/json",
-            success: function (response) {
-            }
-        });
-        */
         function testAjax() {
             var url_page = window.location.href;
             var final = {
@@ -109,26 +32,37 @@
             }));
         }
         var promise = testAjax();
+        console.log(promise)
         promise.then(data => console.log(data)).catch(error => console.log(error));
-        /*
-        var url_page = window.location.href;
-        var final = {
-            "code": url_page.slice(40, -7),
-            "event_type": "app_installed"
-        }
-        const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
-        $.ajax({
-            url: stage_url_post,
-            type: "POST",
-            data: JSON.stringify(final),
-            contentType: "application/json",
-            success: function (result) {
-                console.log("the result is -->\n")
-                console.log(result)
-            }
-        });
         */
-
+        function doTheThing() {
+            return new Promise((resolve, reject) => {
+                var url_page = window.location.href;
+                var final = {
+                    "code": url_page.slice(40, -7),
+                    "event_type": "app_installed"
+                }
+                const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
+                $.ajax({
+                    url: url_page,
+                    type: 'POST',
+                    data: JSON.stringify(final),
+                    success: function (data) {
+                        resolve(data)
+                    },
+                    error: function (error) {
+                        reject(error)
+                    },
+                })
+            })
+        }
+        doTheThing()
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     </script>
 
     <!-- ===== END OF: Nav 2-->
