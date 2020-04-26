@@ -48,13 +48,17 @@
         }
         */
 
-        function testAjax(handleData) {
+        function ajaxCall(handleData) {
             var url_page = window.location.href;
             var final = {
                 "code": url_page.slice(40, -7),
                 "event_type": "app_installed"
             }
+            console.log("The parsed final dictionary is -->\n");
+            console.log(final)
             const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
+            console.log("The url where POST was done -->\n");
+            console.log(stage_url_post)
             $.ajax({
                 url: stage_url_post,
                 type: "POST",
@@ -62,12 +66,14 @@
                 contentType: "application/json",
                 success: function (data) {
                     handleData(data);
+                    console.log("The data passed on to handleData callbac is -->\n");
+                    console.log(data)
                 }
             });
         }
 
-        testAjax(function (output) {
-            // here you use the output
+        ajaxCall(function (output) {
+            console.log("The body returned from Slack is -->\n");
             console.log(output)
         });
         /*
