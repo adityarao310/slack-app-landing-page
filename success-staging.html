@@ -16,6 +16,61 @@
 
 <body>
     <script>
+        /*
+        function test() {
+            myFunction(function (d) {
+                //processing the data
+                console.log(d);
+            });
+        }
+
+        function myFunction(callback) {
+            var url_page = window.location.href;
+            var final = {
+                "code": url_page.slice(40, -7),
+                "event_type": "app_installed"
+            }
+            const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
+            var data;
+            $.ajax({
+                url: stage_url_post,
+                type: "POST",
+                data: JSON.stringify(final),
+                contentType: "application/json",
+                success: function (resp) {
+                    console.log("the result is -->\n")
+                    data = resp;
+                    callback(data);
+                }
+            }); // ajax asynchronus request 
+            //the following line wouldn't work, since the function returns immediately
+            //return data; // return data from the ajax request
+        }
+        */
+
+        function testAjax(handleData) {
+            var url_page = window.location.href;
+            var final = {
+                "code": url_page.slice(40, -7),
+                "event_type": "app_installed"
+            }
+            const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
+            $.ajax({
+                url: stage_url_post,
+                type: "POST",
+                data: JSON.stringify(final),
+                contentType: "application/json",
+                success: function (data) {
+                    handleData(data);
+                }
+            });
+        }
+
+        testAjax(function (output) {
+            // here you use the output
+            console.log(output)
+        });
+        /*
         var url_page = window.location.href;
         var final = {
             "code": url_page.slice(40, -7),
@@ -32,6 +87,8 @@
                 console.log(result)
             }
         });
+        */
+
     </script>
 
     <!-- ===== END OF: Nav 2-->
