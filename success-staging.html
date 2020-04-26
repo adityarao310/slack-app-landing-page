@@ -15,66 +15,63 @@
 </head>
 
 <body>
-    <script>
-        var url_page = window.location.href;
-        var url_to_parse = new URL(url_page);
-        var code_to_slack = url_to_parse.searchParams.get("code");
-        var final = {
-            "code": code_to_slack,
-            "event_type": "app_installed"
-        }
-        const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
+    <div class="container container--large header-09__container">
+        <div class="header-09__main">
+            <div class="header-09__main_content">
+                <h1 id="main_title" class="heading heading--accent header-09__heading">Successfully installed<img class="emoji  " src="img/emoji/cartwheel.png" alt="Emoji" /></h1>
 
-        $.ajax({
-            url: stage_url_post,
-            type: "POST",
-            data: JSON.stringify(final),
-            contentType: "application/json",
-            success: function (result) {
-                console.log(result)
-                // to generate this type of url https://slack.com/app_redirect?app=A010K7NH1RR&team=T010R08RW20&tab=home
-                var app_id = "A010K7NH1RR";
-                var slack_team_id = "T010R08RW20";
-                var deep_link_url = `https://slack.com/app_redirect?app=${app_id}&team=${slack_team_id}&tab=home`
-                var link_html = `<div class="container container--large header-09__container">
-                                <div class="header-09__main">
-                                    <div class="header-09__main_content">
-                                        <h1 id="main_title" class="heading heading--accent header-09__heading">Successfully installed<img class="emoji  " src="img/emoji/cartwheel.png" alt="Emoji" /></h1>
-                                        <!--<a class="button   button--accent-bg " href="" target="" id="open_slack"><span>Open Kaapi inside Slack</span></a>-->
-                                        <a class="button   button--accent-bg " href=${deep_link_url}><span>Open Kaapi inside Slack</span></a>
-                                        <p>You can also find Kaapi inside your Slack workspace
-                                            by typing <em>ctrl+k or cmd+k
-                                            </em></p>
+                <p id="disclaimer_success_page">You can also find Kaapi inside your Slack workspace
+                    by typing <em>ctrl+k or cmd+k
+                    </em></p>
+            </div>
+        </div>
+        <div class="header-09__img">
+            <div class="header-09__img_wrapper">
+
+                <div class="header-09__big_mockup">
+                    <div class="mockup  mockup--white mockup--macbook mockup--portrait ">
+                        <div class="mockup__container">
+
+                            <div class="mockup__case">
+                                <div class="mockup__spacer"></div>
+                                <div class="mockup__screen">
+                                    <div class="mockup__screenshot" style="background-image: url(https://raw.githubusercontent.com/adityarao310/slack-app-landing-page/master/img/final_images/pablo-good-job.png)">
                                     </div>
                                 </div>
-                                <div class="header-09__img">
-                                    <div class="header-09__img_wrapper">
-
-                                        <div class="header-09__big_mockup">
-                                            <div class="mockup  mockup--white mockup--macbook mockup--portrait ">
-                                                <div class="mockup__container">
-
-                                                    <div class="mockup__case">
-                                                        <div class="mockup__spacer"></div>
-                                                        <div class="mockup__screen">
-                                                            <div class="mockup__screenshot" style="background-image: url(https://raw.githubusercontent.com/adityarao310/slack-app-landing-page/master/img/final_images/pablo-good-job.png)">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>`
-                $("body").append(link_html);
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var url_page = window.location.href;
+            var url_to_parse = new URL(url_page);
+            var code_to_slack = url_to_parse.searchParams.get("code");
+            var final = {
+                "code": code_to_slack,
+                "event_type": "app_installed"
             }
-        });
+            const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
 
+            $.ajax({
+                url: stage_url_post,
+                type: "POST",
+                data: JSON.stringify(final),
+                contentType: "application/json",
+                success: function (result) {
+                    console.log(result)
+                    // to generate this type of url https://slack.com/app_redirect?app=A010K7NH1RR&team=T010R08RW20&tab=home
+                    var app_id = result["app_id"];
+                    var slack_team_id = result["slack_team_id"];
+                    var deep_link_url = `https://slack.com/app_redirect?app=${app_id}&team=${slack_team_id}&tab=home`
+                    var link_html = `<a class="button   button--accent-bg " href=${deep_link_url}><span>Open Kaapi inside Slack</span></a>`
+                    $("body").append(link_html);
+                }
+            });
 
-
-    </script>
-
-
+        </script>
+    </div>
 </body>
 
 </html>
