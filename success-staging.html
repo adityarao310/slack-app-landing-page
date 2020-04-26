@@ -60,7 +60,8 @@
                 data: JSON.stringify(final),
                 contentType: "application/json",
                 success: function (result) {
-                    console.log(result)
+                    console.log(result) // when it comes from Slack app, it is of datatype string 
+                    result = JSON.parse(result)
                     // to generate this type of url https://slack.com/app_redirect?app=A010K7NH1RR&team=T010R08RW20&tab=home
                     var app_id = result["app_id"];
                     console.log(app_id)
