@@ -101,12 +101,12 @@
                 "event_type": "app_installed"
             }
             const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
-            return $.ajax({
+            return Promise.resolve($.ajax({
                 url: stage_url_post,
                 type: "POST",
                 data: JSON.stringify(final),
                 contentType: "application/json"
-            });
+            }));
         }
         var promise = testAjax();
         promise.then(data => console.log(data)).catch(error => console.log(error));
