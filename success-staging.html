@@ -66,7 +66,7 @@
                     var slack_team_id = result["slack_team_id"];
                     var deep_link_url = `https://slack.com/app_redirect?app=${app_id}&team=${slack_team_id}&tab=home`
                     var link_html = `<a class="button   button--accent-bg " href=${deep_link_url}><span>Open Kaapi inside Slack</span></a>`
-                    $("body").append(link_html);
+                    $(link_html).insertBefore("#disclaimer_success_page");
                 }
             });
 
