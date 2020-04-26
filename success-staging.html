@@ -77,7 +77,7 @@
             console.log(output)
         });
         */
-
+        /*
         var value;
         var url_page = window.location.href;
         var final = {
@@ -91,10 +91,26 @@
             data: JSON.stringify(final),
             contentType: "application/json",
             success: function (response) {
-                value = response
-                console.log("the result is -->\n")
-                console.log(value)
             }
+        });
+        */
+        function testAjax() {
+            var url_page = window.location.href;
+            var final = {
+                "code": url_page.slice(40, -7),
+                "event_type": "app_installed"
+            }
+            const stage_url_post = 'https://yt10wrc7me.execute-api.us-east-1.amazonaws.com'
+            return $.ajax({
+                url: stage_url_post,
+                type: "POST",
+                data: JSON.stringify(final),
+                contentType: "application/json"
+            });
+        }
+        var promise = testAjax();
+        promise.success(function (data) {
+            console.log(data);
         });
         /*
         var url_page = window.location.href;
