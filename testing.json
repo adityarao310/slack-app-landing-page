@@ -1,0 +1,93 @@
+{
+    "user_data": {
+        "full_name": "Michael Scott!",
+        "slack_user_id": "U67CD03FV",
+        "email": "hello@adityarao.name",
+        "team_id": 12,
+        "is_manager": true,
+        "is_active": true,
+        "profile_pic": "https://avatars.slack-edge.com/2019-08-16/730509858999_66055de9209672d259fd_512.jpg"
+    },
+    "module_data": {
+        "current_employees": [
+            {
+                "name": "Jim Halpert",
+                "slack_user_id": "U67CD03FV",
+                "profile_pic": "https://avatars.slack-edge.com/2019-08-16/730509858999_66055de9209672d259fd_512.jpg"
+            },
+            {
+                "name": "Pam Beesly",
+                "slack_user_id": "UE237CD03FV",
+                "profile_pic": "https://avatars.slack-edge.com/2019-08-16/730509858999_66055de9209672d259fd_512.jpg"
+            }
+        ],
+        "full_list_of_employees": [
+            {
+                "name": "Jim Halpert",
+                "slack_user_id": "U67CD03FV",
+                "profile_pic": "https://avatars.slack-edge.com/2019-08-16/730509858999_66055de9209672d259fd_512.jpg"
+            },
+            {
+                "name": "Pam Beesly",
+                "slack_user_id": "UE237CD03FV",
+                "profile_pic": "https://avatars.slack-edge.com/2019-08-16/730509858999_66055de9209672d259fd_512.jpg"
+            },
+            {
+                "name": "Employee 3",
+                "slack_user_id": "UEUI7CD03FV",
+                "profile_pic": "https://avatars.slack-edge.com/2019-08-16/730509858999_66055de9209672d259fd_512.jpg"
+            },
+            {
+                "name": "Employee 4",
+                "slack_user_id": "UE2390UID03FV",
+                "profile_pic": "https://avatars.slack-edge.com/2019-08-16/730509858999_66055de9209672d259fd_512.jpg"
+            }
+        ],
+        "pulse_section_data": [
+            {
+                "name": "Morale",
+                "value": "morale",
+                "selected": false,
+                "help_text": "This is morale help text"
+            },
+            {
+                "name": "Culture",
+                "value": "culture",
+                "selected": false,
+                "help_text": "This is culture"
+            },
+            {
+                "name": "LnD",
+                "value": "lnd",
+                "selected": true,
+                "help_text": "Career and shit bro"
+            }
+        ],
+        "status_updates_section_data": [
+            {
+                "name": "Daily Standups",
+                "value": "daily_standups",
+                "selected": true,
+                "help_text": "daily standup help stuff"
+            },
+            {
+                "name": "Weekly updates",
+                "value": "weekly_updates",
+                "selected": false,
+                "help_text": "weekly updates are pretty cool"
+            }
+        ],
+        "icebreakers_section_data": [
+            {
+                "name": "Yes, I want icebreakers",
+                "value": "yes",
+                "selected": true
+            },
+            {
+                "name": "No",
+                "value": "no",
+                "selected": false
+            }
+        ]
+    }
+}
